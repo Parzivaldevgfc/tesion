@@ -1,0 +1,27 @@
+[
+  {
+    "id": "ORD-1760995077283-h1q62v",
+    "createdAt": "2025-10-20T21:17:57.283Z",
+    "customer": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "notes": ""
+    },
+    "options": {
+      "pages": 46,
+      "copies": 1,
+      "color": "bw",
+      "sides": "single",
+      "binding": "spiral",
+      "paper": "100",
+      "cover": "rigida",
+      "delivery": "ritiro",
+      "speed": "express"
+    },
+    "total": 12.91,
+    "file": null,
+    "status": "received"
+  }
+]

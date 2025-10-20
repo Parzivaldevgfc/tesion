@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stampa Tesi – Preventivo e Ordine Online</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">ST</div>
+          <div>
+            <h1>Stampa Tesi</h1>
+            <p class="subtitle">Preventivo immediato, caricamento file e ordine online</p>
+          </div>
+        </div>
+
+        <div class="summary">
+          <span>Totale stimato</span>
+          <strong id="total" aria-live="polite">&euro; 0,00</strong>
+        </div>
+      </div>
+    </header>
+
+    <main class="container grid">
+      <section class="card">
+        <h2 class="section-title">Dettagli di stampa</h2>
+        <form id="order-form" novalidate>
+          <div class="grid-two">
+            <div class="row">
+              <label for="pages">Pagine</label>
+              <input type="number" id="pages" name="pages" min="1" value="50" required />
+            </div>
+            <div class="row">
+              <label for="copies">Copie</label>
+              <input type="number" id="copies" name="copies" min="1" value="1" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <label>Colore</label>
+            <div class="segmented">
+              <label class="chip">
+                <input type="radio" name="color" value="bw" checked />
+                <span>B/N</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="color" value="color" />
+                <span>Colore</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <label>Fronte/Retro</label>
+            <div class="segmented">
+              <label class="chip">
+                <input type="radio" name="sides" value="single" checked />
+                <span>Solo fronte</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="sides" value="double" />
+                <span>Fronte/Retro</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid-three">
+            <div class="row">
+              <label for="binding">Rilegatura</label>
+              <select name="binding" id="binding">
+                <option value="none">Nessuna</option>
+                <option value="spiral">Spirale (+&euro; 2 / copia)</option>
+                <option value="termica">Termica (+&euro; 4 / copia)</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="paper">Carta</label>
+              <select name="paper" id="paper">
+                <option value="80">80 g/m²</option>
+                <option value="100">100 g/m² (+&euro; 0,01 / pag.)</option>
+              </select>
+            </div>
+            <div class="row">
+              <label for="cover">Copertina</label>
+              <select name="cover" id="cover">
+                <option value="none">Nessuna</option>
+                <option value="trasparente">Trasparente (+&euro; 1,50 / copia)</option>
+                <option value="rigida">Rigida (+&euro; 6 / copia)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <label>Consegna</label>
+            <div class="segmented">
+              <label class="chip">
+                <input type="radio" name="delivery" value="ritiro" checked />
+                <span>Ritiro in sede</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="delivery" value="spedizione" />
+                <span>Spedizione (+&euro; 6,90)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <label>Velocità</label>
+            <div class="segmented">
+              <label class="chip">
+                <input type="radio" name="speed" value="standard" checked />
+                <span>Standard</span>
+              </label>
+              <label class="chip">
+                <input type="radio" name="speed" value="express" />
+                <span>Express (+20%)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="upload row">
+            <label for="file">Carica file (PDF, DOC/DOCX)</label>
+            <input type="file" id="file" name="file" accept=".pdf,.doc,.docx" required />
+            <small class="hint">Max 200MB. Formati supportati: PDF, DOC, DOCX.</small>
+          </div>
+
+          <h3 class="section-title">Dati Cliente</h3>
+          <div class="grid-two">
+            <div class="row">
+              <label for="name">Nome e Cognome</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="row">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+          </div>
+          <div class="grid-two">
+            <div class="row">
+              <label for="phone">Telefono</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="row">
+              <label for="address">Indirizzo</label>
+              <input type="text" id="address" name="address" placeholder="Richiesto per spedizione" />
+            </div>
+          </div>
+          <div class="row">
+            <label for="notes">Note</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Istruzioni, orari, ecc."></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="primary" id="submit-btn">
+              <span class="btn-text">Invia Ordine</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <p id="status" class="status" role="status"></p>
+          </div>
+        </form>
+      </section>
+
+      <aside class="card info">
+        <h2 class="section-title">Come funziona</h2>
+        <ul>
+          <li>Imposta le opzioni di stampa.</li>
+          <li>Carica il file (PDF o DOC/DOCX).</li>
+          <li>Ottieni il preventivo in tempo reale.</li>
+          <li>Completa l'ordine e ricevi conferma.</li>
+        </ul>
+        <h3 class="section-title">Tariffe base</h3>
+        <ul>
+          <li>B/N: &euro; 0,05 / pagina</li>
+          <li>Colore: &euro; 0,20 / pagina</li>
+          <li>Rilegatura a spirale: &euro; 2 / copia</li>
+          <li>Rilegatura termica: &euro; 4 / copia</li>
+          <li>Spedizione: &euro; 6,90</li>
+          <li>Minimo ordine: &euro; 3,00</li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer class="container foot">
+      <span>&copy; <span id="year"></span> Stampa Tesi. Tutti i diritti riservati.</span>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+  </html>
+
